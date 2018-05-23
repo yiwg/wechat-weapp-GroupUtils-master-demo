@@ -36,7 +36,7 @@ Page({
       title: '加载中...',
     })
     wx.request({  //请求我参加的通知
-      url: app.globalData.host + '/application/notice/myView.php',
+      url: app.globalData.host + '/application/notice/myView',
       data: {
         openid,
       },

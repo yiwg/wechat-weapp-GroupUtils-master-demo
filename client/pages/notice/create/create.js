@@ -21,7 +21,7 @@ Page({
   },
   onLoad: function () {
     this.setData({
-      date: utils.year + '年' + utils.month + '月' + utils.date+'日',
+      date: utils.year + '-' + utils.month + '-' + utils.date + ' ' + utils.hours + ":" + utils.minutes+":"+"00",
       year: utils.year,
       name: app.globalData.userInfo.nickName
     })
@@ -66,7 +66,7 @@ Page({
         noticeid: new Date().getTime().toString() + parseInt(Math.random() * 10000000)//创建时间+随机数
       })
       wx.request({
-        url: app.globalData.host + '/application/notice/createNoticeTask.php',
+        url: app.globalData.host + '/application/notice/createNoticeTask',
         data: {
           openid: app.globalData.openid, 
           noticeid: that.data.noticeid,

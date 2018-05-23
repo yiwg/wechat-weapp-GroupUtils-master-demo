@@ -68,7 +68,7 @@ Page({
   },
   storeViewer: function (noticeid, openid) {
     wx.request({
-      url: app.globalData.host + '/application/notice/storeViewerInfor.php',
+      url: app.globalData.host + '/application/notice/storeViewerInfor',
       data: {
         noticeid,
         openid

@@ -141,9 +141,10 @@ App({
     })
   },
   storeuserInfo: function () {  //将登陆的用户详情信息存储到数据库
+    console.log("进入storeuserInfo......openid:" + this.globalData.openid)
     let userInfo = this.globalData.userInfo
     wx.request({
-      url: `${this.globalData.host}/application/link/wxuserDataSave.php`,
+      url: `${this.globalData.host}/application/link/wxuserDataSave`,
       data: {
         openid: this.globalData.openid,  //用户唯一标识
         avatarUrl: userInfo.avatarUrl,//用户信息：图像
