@@ -29,7 +29,7 @@ Page({
       }
     });
     wx.request({  //请求我创建的接龙列表
-      url: app.globalData.host + '/application/vote/myCreate.php',
+      url: app.globalData.host + '/application/vote/myCreate',
       data: {
         openid: app.globalData.openid,
       },

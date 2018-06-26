@@ -49,7 +49,7 @@ Page({
       }
     });
     wx.request({  //请求我创建的通知列表
-      url: app.globalData.host + '/application/notice/myCreate.php',
+      url: app.globalData.host + '/application/notice/myCreate',
       data: {
         openid,
       },

@@ -8,6 +8,7 @@ Page({
   },
   onLoad: function (opt) {
     app.globalData.fromClickId = opt.fromClickId
+    console.log("opt.noticeid=" + opt);
     wx.showShareMenu({
       withShareTicket: true
     })
@@ -16,6 +17,7 @@ Page({
       data: { noticeid: opt.noticeid },
       dataType: 'JSONP',
       success: (res) => {
+        //console.log("res="+res);
         this.setData({
           noticeid: opt.noticeid,
           baseData: JSON.parse(res.data)[0],
@@ -81,7 +83,7 @@ Page({
   },
   getAllViewer: function (noticeid) {
     wx.request({
-      url: app.globalData.host + '/application/notice/getAllViewer.php',
+      url: app.globalData.host + '/application/notice/getAllViewer',
       data: {
         noticeid,
       },
