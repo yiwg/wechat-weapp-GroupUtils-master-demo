@@ -49,7 +49,7 @@ Page({
       title: '加载中...',
     })
     wx.request({  //第一次请求投票任务的详情数据
-      url: app.globalData.host + '/application/vote/getVoteTask.php',
+      url: app.globalData.host + '/application/vote/getVoteTask',
       data: {
         voteid: opt.voteid,
       },
@@ -191,7 +191,7 @@ Page({
         title: '加载中...',
       })
       wx.request({  //再次请求投票任务的详情数据，防止其他用户更新了数据库
-        url: app.globalData.host + '/application/vote/getVoteTask.php',
+        url: app.globalData.host + '/application/vote/getVoteTask',
         data: {
           voteid: that.data.voteid,
         },
@@ -224,7 +224,7 @@ Page({
   submit: function (joinerData) {   //提交用户投票数据
     var that = this;
     wx.request({  //将投票后的optionData0更新保存到数据库，并且单独保存openid为user表示该用户已投票
-      url: app.globalData.host + '/application/vote/storeVoteOne.php',
+      url: app.globalData.host + '/application/vote/storeVoteOne',
       data: {
         voteid: that.data.voteid,
         optionData: joinerData,

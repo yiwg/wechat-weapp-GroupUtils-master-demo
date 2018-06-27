@@ -122,7 +122,7 @@ Page({
         voteid: new Date().getTime().toString() + parseInt(Math.random() * 10000000)//创建时间+随机数
       })
       wx.request({
-        url: app.globalData.host + '/application/vote/createVoteTask.php',
+        url: app.globalData.host + '/application/vote/createVoteTask',
         data: {
           openid: app.globalData.openid,  //openid对应voteid
           voteid: that.data.voteid,

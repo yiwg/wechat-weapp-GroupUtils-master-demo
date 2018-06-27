@@ -16,7 +16,7 @@ Page({
       title: '加载中...',
     })
     wx.request({  //请求我参加的接龙列表
-      url: app.globalData.host + '/application/link/myJoin.php',
+      url: app.globalData.host + '/application/link/myJoin',
       data: {
         openid: app.globalData.openid,
       },
