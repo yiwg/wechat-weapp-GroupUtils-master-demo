@@ -67,12 +67,13 @@ App({
           that.noticeOpenIdReadyCallback(data0.openid)
         }
         that.getUserInfo();//用户授权，并存储用户信息
+        console.log("进入getGId函数,scene=" + that.globalData.opt.scene);
         if (that.globalData.opt.scene == '1044') {  //获取转发的GID
           wx.getShareInfo({ /*小程序群里打开获取群信息模块 */
             shareTicket: that.globalData.opt.shareTicket,
             success: (res) => {
               wx.request({
-                url: `${that.globalData.host}/application/link/wx_xcx.php`,
+                url: `${that.globalData.host}/application/link/wx_xcx`,
                 data: {
                   appid: that.globalData.AppID,
                   sessionKey: data0.session_key,
@@ -91,6 +92,7 @@ App({
     }
     function gIdCallback(res) {
       let GId = JSON.parse(res.data.substring(res.data.indexOf('{'), res.data.lastIndexOf('}') + 1)).openGId;
+      console.log("进入gIdCallback函数,获取的Gid="+Gid);
       that.globalData.enterGId = GId;
       if (that.groupPhoneGIdReadyCallback) {
         that.groupPhoneGIdReadyCallback(GId)
@@ -123,9 +125,14 @@ App({
       title: '登录失败!',
       content: '您刚才拒绝了登录，请选择允许获取用户公开信息',
       success: (res) => {
+        console.log("1");
+        console.log(res);
         wx.openSetting({
           success: (res) => {
+            console.log("2");
+            console.log(res);
             if (res.authSetting['scope.userInfo']) {
+              console.log("3");
               wx.getUserInfo({
                 success: (res) => {
                   this.globalData.userInfo = res.userInfo;
@@ -133,7 +140,14 @@ App({
                 },
               })
             } else {
-              this.getAuthorize();
+              console.log("4");
+              //this.getAuthorize();
+              wx.getUserInfo({
+                success: (res) => {
+                  this.globalData.userInfo = res.userInfo;
+                  this.storeuserInfo();
+                },
+              })
             }
           }
         })

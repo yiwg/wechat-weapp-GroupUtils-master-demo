@@ -16,7 +16,7 @@ Page({
       title: '加载中...',
     })
     wx.request({  //请求我参加的投票
-      url: app.globalData.host + '/application/vote/myJoin.php',
+      url: app.globalData.host + '/application/vote/myJoin',
       data: {
         openid: app.globalData.openid,
       },
@@ -42,13 +42,14 @@ Page({
       }
     });
     wx.request({  //请求该群的taskid数据列表
-      url: app.globalData.host + '/application/vote/getGIDTask.php',
+      url: app.globalData.host + '/application/vote/getGIDTask',
       data: {
         gid: app.globalData.enterGId,
       },
       dataType: 'JSONP',
       success: function (res) {
         wx.hideLoading();
+        console.log("app.globalData.enterGId=" + app.globalData.enterGId)
         console.log('请求到的群taskid', JSON.parse(res.data))
         that.setData({
           groupData: JSON.parse(res.data)
@@ -70,6 +71,8 @@ Page({
   },
   gotoEnroll: function (e) {
     var that = this;
+    //console.log("跳转带的数据:" + e)
+    console.log(e)
     wx.navigateTo({
       url: '../choose/choose?voteid=' + e.currentTarget.dataset.voteid
     })

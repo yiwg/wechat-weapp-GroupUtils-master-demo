@@ -32,7 +32,7 @@ let getUserNetwork = (app, opt) => {
     shareTicket: opt.shareTicket,
     success: (res) => {
       wx.request({
-        url: app.globalData.host + '/application/link/wx_xcx.php',  //放fromGID解密的地址
+        url: app.globalData.host + '/application/link/wx_xcx',  //放fromGID解密的地址
         data: {
           appid: app.globalData.AppID || app.globalData.appId,
           sessionKey: app.globalData.session_key,

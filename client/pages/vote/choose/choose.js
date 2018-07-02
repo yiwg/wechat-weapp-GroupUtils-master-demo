@@ -36,7 +36,8 @@ Page({
     shareHidden: true, //分享面板隐藏
   },
   onLoad: function (opt) {
-    app.globalData.fromClickId= opt.fromClickId
+    app.globalData.fromClickId = opt.fromClickId
+    console.log(opt);
     wx.showShareMenu({
       withShareTicket: true
     })
@@ -101,9 +102,11 @@ Page({
           success: function (res) {
             var encryptedData = res.encryptedData;
             var iv = res.iv;
+            console.log("iv"+iv)
+            console.log("encryptedData" + encryptedData)
             wx.request({
               //url: 'https://test.hytips.com/wechat/Gold/demo.php',
-              url: app.globalData.host + '/application/link/wx_xcx.php',
+              url: app.globalData.host + '/application/link/wx_xcx',
               data: {
                 appid: app.globalData.AppID,  //小程序ID
                 sessionKey: app.globalData.session_key,
@@ -113,10 +116,11 @@ Page({
               dataType: 'JSONP',
               success: function (res) {
                 //此处有坑:返回的数据不是JSON字符串!
+                console.log(res)
                 var GId = JSON.parse(res.data.substring(res.data.indexOf('{'), res.data.lastIndexOf('}') + 1)).openGId;
                 console.log('转发时获取的GID为:' + GId)
                 wx.request({
-                  url: app.globalData.host + '/application/vote/storeVoteGId.php',
+                  url: app.globalData.host + '/application/vote/storeVoteGId',
                   data: {
                     gid: GId,
                     voteid: that.data.voteid,

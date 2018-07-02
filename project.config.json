@@ -10,8 +10,8 @@
 		"minified": true,
 		"newFeature": true
 	},
-	"appid": "wxf919c0c29fc12f65",
-	"projectname": "wechat-weapp-GroupUtils-demo",
+	"appid": "wx0ac1436de2d72b7c",
+	"projectname": "wechat-weapp-GroupUtils-master",
 	"condition": {
 		"search": {
 			"current": -1,

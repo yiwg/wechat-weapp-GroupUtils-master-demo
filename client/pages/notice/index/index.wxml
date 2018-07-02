@@ -6,7 +6,7 @@
   </view>
   <view>
     <view wx:if='{{currentTab==0}}'>
-      <view wx:for="{{joinData}}" data-noticeid="{{item.noticeid}}" bindtap='gotoEnroll' class='item'>
+      <view wx:for="{{joinData}}" data-noticeid="{{item.noticeId}}" bindtap='gotoEnroll' class='item'>
         <view style='font-weight:bold;'>
           {{item.title}}
         </view>
@@ -14,7 +14,7 @@
       </view>
     </view>
     <view wx:if='{{currentTab==1}}'>
-      <view wx:for="{{createData}}" data-noticeid="{{item.noticeid}}" bindtap='gotoEnroll' class='item'>
+      <view wx:for="{{createData}}" data-noticeid="{{item.noticeId}}" bindtap='gotoEnroll' class='item'>
         <view style='font-weight:bold;'>
           {{item.title}}
         </view>
@@ -37,5 +37,7 @@
   <view direction="all" class='creat' bindtap='creat'>
     创建通知
   </view>
+  <button bindgetuserinfo="onGetUserinfo" 
+open-type="getUserInfo" type="primary">用户授权</button>
 
 </view>

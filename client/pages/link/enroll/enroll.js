@@ -142,7 +142,7 @@ Page({
             var iv = res.iv;
             wx.request({
               //url: 'https://test.hytips.com/wechat/Gold/demo.php',
-              url: app.globalData.host + '/application/link/wx_xcx.php',
+              url: app.globalData.host + '/application/link/wx_xcx',
               data: {
                 appid: app.globalData.AppID,  //小程序ID
                 sessionKey: app.globalData.session_key,
