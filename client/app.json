@@ -32,7 +32,7 @@
       },
       {
         "pagePath": "pages/link/index/index",
-        "text": "群接龙",
+        "text": "群相册",
         "selectedColor": "#338FFF",
         "iconPath": "imgs/tab_02.jpg",
         "selectedIconPath": "imgs/tab_06.jpg"

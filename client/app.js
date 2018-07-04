@@ -4,12 +4,12 @@
   ·结合openid和群id，生成小程序的用户关系网
 */
 const getUserNetwork = require('utils/shareModule.js').getUserNetwork; //引入用户关系网追踪模块
-const host = 'http://192.168.1.5:3000'
+const host = 'https://wx.welife001.com'
 App({
   globalData: {
     host,
-    AppID: 'wxf919c0c29fc12f65',
-    secret: 'd5b11742fe0fef838d277bc14aea1a52',
+    AppID: 'wx0ac1436de2d72b7c',
+    secret: '614dfea35e991225a4561bb992762d54',
     openid: '',
     session_key: '',
     userInfo: '',
@@ -19,6 +19,11 @@ App({
   onLaunch: function (opt) {
     this.globalData.opt = opt;
     this.login();
+  },
+  onShow: function () {
+    console.log('App onShow');
+    this.login();
+
   },
   login: function () {
     wxLogin()
@@ -49,6 +54,8 @@ App({
             },
             dataType: 'JSONP',
             success: (res) => {  //服务端请求并存储openid,并发送openid过来
+              console.log("登录成功!!")
+              console.log(res);
               resolve(res)
             }
           })
@@ -115,7 +122,7 @@ App({
           this.storeuserInfo();
         },
         fail: () => {
-          this.getAuthorize();
+          //this.getAuthorize();
         }
       })
     }

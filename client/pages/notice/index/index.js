@@ -94,5 +94,20 @@ Page({
     wx.navigateTo({
       url: '../noticeDetail/noticeDetail?noticeid=' + e.currentTarget.dataset.noticeid
     })
+  },
+  onGetUserinfo:function(){
+      //调用登录接口
+      wx.getUserInfo({
+        withCredentials: false,
+        success: (res) => {
+          app.globalData.userInfo = res.userInfo
+          //typeof cb == "function" && cb(this.globalData.userInfo)
+          ///this.storeuserInfo();
+        },
+        fail: () => {
+          console.log("登录失败!");
+        }
+      })
+    
   }
 })

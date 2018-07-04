@@ -41,6 +41,7 @@ Page({
         })
       }
     });
+    //查看小程序从哪里打开
     wx.request({  //请求该群的taskid数据列表
       url: app.globalData.host + '/application/vote/getGIDTask',
       data: {
